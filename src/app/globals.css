@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-100 text-secondary-700 px-4 py-2 rounded-lg font-medium hover:bg-secondary-200 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .card-header {
+    @apply border-b border-gray-200 pb-4 mb-6;
+  }
+  
+  .card-title {
+    @apply text-xl font-semibold text-gray-900;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white shadow-sm hover:border-gray-400;
+  }
+  
+  .input-field:focus {
+    @apply shadow-md;
+  }
+  
+  .input-field:disabled {
+    @apply bg-gray-50 text-gray-500 cursor-not-allowed;
+  }
+  
+  .input-field.error {
+    @apply border-red-500 focus:ring-red-500;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white;
+  }
+  
+  .input:focus {
+    @apply shadow-sm;
+  }
+  
+  .input:disabled {
+    @apply bg-gray-50 text-gray-500 cursor-not-allowed;
+  }
+  
+  .input.error {
+    @apply border-red-500 focus:ring-red-500;
+  }
+  
+  textarea.input-field,
+  textarea.input {
+    @apply resize-y min-h-[80px];
+  }
+  
+  select.input-field,
+  select.input {
+    @apply cursor-pointer;
+  }
+  
+  .form-error {
+    @apply text-sm text-red-600 mt-1 flex items-center;
+  }
+  
+  .form-error::before {
+    content: "⚠️";
+    @apply mr-1;
+  }
+  
+  .form-success {
+    @apply text-sm text-green-600 mt-1 flex items-center;
+  }
+  
+  .form-success::before {
+    content: "✓";
+    @apply mr-1;
+  }
+  
+  .alert {
+    @apply px-4 py-3 rounded-lg font-medium;
+  }
+  
+  .alert-danger {
+    @apply bg-red-50 text-red-800 border border-red-200;
+  }
+  
+  .alert-success {
+    @apply bg-green-50 text-green-800 border border-green-200;
+  }
+  
+  .alert-warning {
+    @apply bg-yellow-50 text-yellow-800 border border-yellow-200;
+  }
+  
+  .alert-info {
+    @apply bg-blue-50 text-blue-800 border border-blue-200;
+  }
+
+  .nav-link {
+    @apply text-secondary-700 hover:text-primary-600 transition-colors duration-200;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-primary-600 text-primary-600 px-4 py-2 rounded-lg font-medium hover:bg-primary-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+}
+
+/* Page setup for printing */
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+/* Print styles for reports */
+@media print {
+  /* Preserve on-screen colors and backgrounds */
+  html, body {
+    -webkit-print-color-adjust: exact !important; /* Chrome/Safari */
+    print-color-adjust: exact !important; /* Modern spec */
+    color-adjust: exact !important; /* Legacy */
+    background: transparent !important;
+  }
+
+  .print\\:bg-white {
+    background-color: white !important;
+  }
+  
+  .print\\:shadow-none {
+    box-shadow: none !important;
+  }
+  
+  .print\\:border-0 {
+    border: none !important;
+  }
+  
+  .print\\:py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  .print\\:text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  
+  .print\\:text-base {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  .print\\:hidden {
+    display: none !important;
+  }
+  
+  /* Ensure proper page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+  
+  /* Optimize colors for print */
+  .print\\:bg-blue-600 {
+    background-color: #2563eb !important;
+  }
+  
+  /* Hide interactive elements in print */
+  button, .btn-primary, .btn-secondary {
+    display: none !important;
+  }
+  
+  /* Respect original colors; do NOT force monochrome */
+  
+  /* Optimize spacing for print */
+  .print\\:space-y-2 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  .print\\:space-y-4 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  .print\\:space-y-6 > * + * {
+    margin-top: 1.5rem !important;
+  }
+
+  /* Avoid breaking important blocks across pages */
+  .page-break-inside-avoid,
+  .card,
+  .section,
+  .table,
+  table,
+  tr,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Optional utility to hide elements in print */
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .mobile\\:text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  .mobile\\:p-4 {
+    padding: 1rem !important;
+  }
+  
+  .mobile\\:space-y-2 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  .input-field {
+    @apply px-3 py-2 text-sm;
+  }
+  
+  .input {
+    @apply px-2 py-1.5 text-xs;
+  }
+}
+
+/* Animation improvements */
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+    transform: translateY(10px);
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.gradient-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
